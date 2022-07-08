@@ -1,0 +1,49 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+}
+
+.right-content, .left-content {
+  max-width: 50%;
+  flex: 1;
+  margin-top: 100px;
+}
+
+.tab_content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.item_form  label{
+  display: block;
+  margin-bottom: 5px;
+}
+hr {
+  margin: 10px 0;
+}
+
+
+
+.item {
+    border: 1px solid #000;
+    max-width: 200px;
+    margin-bottom: 5px;
+  padding: 10px;
+
+}
+.item h3 {
+    margin-bottom: 5px;
+}
+
+.item form {
+    display: flex;
+    flex-direction: column;
+}
