@@ -8,6 +8,20 @@ function App() {
   const [size1, setSize1] = useState(1);
   const [exterior1, setExterior1] = useState("");
 
+  const [voltage3, setVoltage3] = useState("");
+  const [type3, setType3] = useState(5);
+  const [size3, setSize3] = useState(1);
+  const [body3, setBody3] = useState("");
+  const [direction3, setDirection3] = useState("");
+  const [func3, setFunc3] = useState("");
+
+  const [voltage4, setVoltage4] = useState("");
+  const [color4, setColor4] = useState("");
+  const [type4, setType4] = useState(`п`);
+  const [timer4, setTimer4] = useState("");
+  const [size4, setSize4] = useState(3);
+
+
   const renderTab = () => {
     switch (tab) {
       case "transport":
@@ -453,26 +467,28 @@ function App() {
         return (
           <div className="pedestrian_tab">
             <div className="tab_title">
-              <h1></h1>
+              <h1> 
+                  T.{type3}-{size3}M{voltage3}
+              </h1>
             </div>
             <div className="tab_content">
               <div className="item">
                 <h3 className="item_header">Напряжение</h3>
                 <form action="" className="form">
                   <label>
-                    <input type="radio" name="voltage" />
+                    <input type="radio" name="voltage" onClick={() => setVoltage3("")}/>
                     220 В 50 Гц
                   </label>
                   <label>
-                    <input type="radio" name="voltage" />
+                    <input type="radio" name="voltage" onClick={() => setVoltage3(2)} />
                     +42 В
                   </label>
                   <label>
-                    <input type="radio" name="voltage" />
+                    <input type="radio" name="voltage" onClick={() => setVoltage3(3)}/>
                     +12 В
                   </label>
                   <label>
-                    <input type="radio" name="voltage" />
+                    <input type="radio" name="voltage" onClick={() => setVoltage3(4)}/>
                     +24 В
                   </label>
                 </form>
@@ -481,11 +497,11 @@ function App() {
                 <h3 className="item_header">Тип</h3>
                 <form action="" className="form">
                   <label>
-                    <input type="radio" name="type" />
+                    <input type="radio" name="type" onClick={() => setType3(5)}/>
                     Т.5
                   </label>
                   <label>
-                    <input type="radio" name="type" />
+                    <input type="radio" name="type" onClick={() => setType3(9)}/>
                     Т.9 (СТБ 1300)
                   </label>
                   <label>
@@ -561,26 +577,28 @@ function App() {
         return (
           <div className="pedestrian_tab">
             <div className="tab_title">
-              <h1></h1>
+              <h1>
+                ТИ.{type4}{color4}-{size4}МИ{voltage4}{timer4}
+              </h1>
             </div>
             <div className="tab_content">
               <div className="item">
                 <h3 className="item_header">Напряжение</h3>
                 <form action="" className="form">
                   <label>
-                    <input type="radio" name="voltage" />
+                    <input type="radio" name="voltage" onClick={() => setVoltage4("")}/>
                     220 В 50 Гц
                   </label>
                   <label>
-                    <input type="radio" name="voltage" />
+                    <input type="radio" name="voltage" onClick={() => setVoltage4(2)}/>
                     +42 В
                   </label>
                   <label>
-                    <input type="radio" name="voltage" />
+                    <input type="radio" name="voltage" onClick={() => setVoltage4(3)}/>
                     +12 В
                   </label>
                   <label>
-                    <input type="radio" name="voltage" />
+                    <input type="radio" name="voltage" onClick={() => setVoltage4(4)}/>
                     +24 В
                   </label>
                 </form>
@@ -589,12 +607,12 @@ function App() {
                 <h3 className="item_header">Размер</h3>
                 <form action="" className="form">
                   <label>
-                    <input type="radio" name="size" />
-                    200 мм
+                    <input type="radio" name="size" onClick={() => {setSize4(3); setType4("п")}}/>
+                    400 мм
                   </label>
                   <label>
-                    <input type="radio" name="size" />
-                    300 мм
+                    <input type="radio" name="size" onClick={() => {setSize4(5); setType4("в")}}/>
+                    600 мм
                   </label>
                 </form>
               </div>
@@ -602,7 +620,7 @@ function App() {
                 <h3 className="item_header">Корпус</h3>
                 <form action="" className="form">
                   <label>
-                    <input type="radio" name="voltage" />
+                    <input checked type="radio" name="voltage" />
                     Моно
                   </label>
                   <label>
@@ -615,11 +633,11 @@ function App() {
                 <h3 className="item_header">Тип</h3>
                 <form action="" className="form">
                   <label>
-                    <input type="radio" name="type" />
+                    <input type="radio" name="type" defaultChecked onClick={() => {setSize4(3); setType4("п")}}/>
                     Пешеходный
                   </label>
                   <label>
-                    <input type="radio" name="type" />
+                    <input type="radio" name="type"  onClick={() => {setSize4(5); setType4("в")}}/>
                     Транспортный
                   </label>
                 </form>
@@ -627,25 +645,28 @@ function App() {
               <div className="item">
                 <h3 className="item_header">Функции</h3>
                 <form action="" className="form">
-                  <h4>Таймер</h4>
                   <label>
-                    <input type="radio" name="func" />
+                    <input checked disabled type="checkbox"></input>
+                    Таймер
+                  </label>
+                  <label>
+                    <input defaultChecked type="radio" name="func" onClick={() => setTimer4("")}/>
                     для обоих
                   </label>
                   <label>
-                    <input type="radio" name="func" />
+                    <input type="radio" name="func" onClick={() => setTimer4("(к)")}/>
                     для красного
                   </label>
                   <label>
-                    <input type="radio" name="func" />
+                    <input type="radio" name="func" onClick={() => setTimer4("(з)")}/>
                     для зеленого
                   </label>
                   <label>
-                    <input type="checkbox" name="" />
+                    <input type="checkbox" name=""/>
                     Адаптивность
                   </label>
                   <label>
-                    <input type="checkbox" name="" />
+                    <input type="checkbox" name=""/>
                     ТВП
                   </label>
                 </form>
@@ -654,19 +675,19 @@ function App() {
                 <h3 className="item_header">Цвет свечения</h3>
                 <form action="" className="form">
                   <label>
-                    <input type="radio" name="voltage" />
+                    <input type="radio" name="voltage" onClick={() => setColor4("")}/>
                     Белый
                   </label>
                   <label>
-                    <input type="radio" name="voltage" />
+                    <input type="radio" name="voltage" onClick={() => setColor4("(ж)")}/>
                     Желтый
                   </label>
                   <label>
-                    <input type="radio" name="voltage" />
+                    <input type="radio" name="voltage" onClick={() => setColor4("(з)")}/>
                     Зеленый
                   </label>
                   <label>
-                    <input type="radio" name="voltage" />
+                    <input type="radio" name="voltage" onClick={() => setColor4("(к)")}/>
                     Красный
                   </label>
                 </form>
