@@ -21,6 +21,13 @@ function App() {
   const [timer4, setTimer4] = useState("");
   const [size4, setSize4] = useState(3);
 
+  const [voltage2, setVoltage2] = useState("");
+  const [size2, setSize2] = useState(1);
+  const [body2, setBody2] = useState("");
+  const [blackBody2, setBlackBody2] = useState(false);
+  const [func2, setFunc2] = useState(false);
+  const [timerColor2, setTimerColor2] = useState("кз");
+  const [aperture2, setAperture2] = useState(1);
 
   const renderTab = () => {
     switch (tab) {
@@ -356,26 +363,48 @@ function App() {
         return (
           <div className="pedestrian_tab">
             <div className="tab_title">
-              <h1></h1>
+              <h1>
+                П.2-{size2}М{voltage2}
+                {body2 || blackBody2
+                  ? `(${body2}${blackBody2 ? "ч" : ""})`
+                  : body2}
+                {func2 ? `И(${aperture2}${timerColor2})` : ""}
+              </h1>
             </div>
             <div className="tab_content">
               <div className="item">
                 <h3 className="item_header">Напряжение</h3>
                 <form action="" className="form">
                   <label>
-                    <input type="radio" name="voltage" />
+                    <input
+                      type="radio"
+                      onClick={() => setVoltage2("")}
+                      name="voltage"
+                    />
                     220 В 50 Гц
                   </label>
                   <label>
-                    <input type="radio" name="voltage" />
+                    <input
+                      type="radio"
+                      onClick={() => setVoltage2(2)}
+                      name="voltage"
+                    />
                     +42 В
                   </label>
                   <label>
-                    <input type="radio" name="voltage" />
+                    <input
+                      type="radio"
+                      name="voltage"
+                      onClick={() => setVoltage2(3)}
+                    />
                     +12 В
                   </label>
                   <label>
-                    <input type="radio" name="voltage" />
+                    <input
+                      type="radio"
+                      name="voltage"
+                      onClick={() => setVoltage2(4)}
+                    />
                     +24 В
                   </label>
                 </form>
@@ -384,11 +413,19 @@ function App() {
                 <h3 className="item_header">Размер</h3>
                 <form action="" className="form">
                   <label>
-                    <input type="radio" name="size" />
+                    <input
+                      type="radio"
+                      onClick={() => setSize2(1)}
+                      name="size"
+                    />
                     200 мм
                   </label>
                   <label>
-                    <input type="radio" name="size" />
+                    <input
+                      type="radio"
+                      onClick={() => setSize2(2)}
+                      name="size"
+                    />
                     300 мм
                   </label>
                 </form>
@@ -397,11 +434,20 @@ function App() {
                 <h3 className="item_header">Корпус</h3>
                 <form action="" className="form">
                   <label>
-                    <input type="radio" name="voltage" />
+                    <input
+                      type="radio"
+                      onClick={() => setBody2("")}
+                      defaultChecked
+                      name="body"
+                    />
                     Моно
                   </label>
                   <label>
-                    <input type="radio" name="voltage" />
+                    <input
+                      type="radio"
+                      onClick={() => setBody2("3")}
+                      name="body"
+                    />
                     Модульный
                   </label>
                   <label>
@@ -413,7 +459,11 @@ function App() {
                     Козырьки (бленды)
                   </label>
                   <label>
-                    <input type="checkbox" name="" />
+                    <input
+                      type="checkbox"
+                      onClick={() => setBlackBody2(!blackBody2)}
+                      name=""
+                    />
                     Черный корпус
                   </label>
                 </form>
@@ -426,26 +476,64 @@ function App() {
                     Желтый круг
                   </label>
                   <hr />
-                  <h4>Таймер</h4>
                   <label>
-                    <input type="radio" name="func" />
-                    для обоих
+                    <input
+                      type="checkbox"
+                      name="func"
+                      onClick={() => setFunc2(!func2)}
+                    />
+                    <span className="func_title">Таймер</span>
                   </label>
-                  <label>
-                    <input type="radio" name="func" />
-                    для красного
-                  </label>
-                  <label>
-                    <input type="radio" name="func" />
-                    для зеленого
-                  </label>
+                  {func2 ? (
+                    <div className="timer-radio">
+                      <label>
+                        <input
+                          type="radio"
+                          defaultChecked
+                          name="func"
+                          onClick={() => setTimerColor2("кз")}
+                        />
+                        для обоих
+                      </label>
+                      <label>
+                        <input
+                          type="radio"
+                          name="func"
+                          onClick={() => setTimerColor2("к")}
+                        />
+                        для красного
+                      </label>
+                      <label>
+                        <input
+                          type="radio"
+                          name="func"
+                          onClick={() => setTimerColor2("з")}
+                        />
+                        для зеленого
+                      </label>
+                      <hr />
+                      <label>
+                        <input
+                          defaultChecked
+                          type="radio"
+                          name="aperture"
+                          onClick={() => setAperture2(1)}
+                        />
+                        в квадратной апертуре
+                      </label>
+                      <label>
+                        <input
+                          type="radio"
+                          name="aperture"
+                          onClick={() => setAperture2(2)}
+                        />
+                        в круглой апертуре
+                      </label>
+                    </div>
+                  ) : (
+                    ""
+                  )}
                   <hr />
-                  <label>
-                    <input type="radio" name="aperture" />в квадратной апертуре
-                  </label>
-                  <label>
-                    <input type="radio" name="aperture" />в круглой апертуре
-                  </label>
                   <label>
                     <input type="checkbox" name="" />
                     Адаптивность
