@@ -28,6 +28,13 @@ function App() {
   const [func2, setFunc2] = useState(false);
   const [timerColor2, setTimerColor2] = useState("кз");
   const [aperture2, setAperture2] = useState(1);
+  const [yellowCircle2, setYellowCircle2] = useState(false);
+  const [screen2, setScreen2] = useState(false);
+  const [blends2, setBlends2] = useState(false);
+  const [adaptive2, setAdaptive2] = useState(false);
+  const [tvp2, setTvp2] = useState(false);
+  const [sound2, setSound2] = useState(false);
+  
 
   const renderTab = () => {
     switch (tab) {
@@ -364,11 +371,17 @@ function App() {
           <div className="pedestrian_tab">
             <div className="tab_title">
               <h1>
-                П.2-{size2}М{voltage2}
+                П.2{yellowCircle2 ? ".ж" : ""}-{size2}М
                 {body2 || blackBody2
                   ? `(${body2}${blackBody2 ? "ч" : ""})`
                   : body2}
-                {func2 ? `И(${aperture2}${timerColor2})` : ""}
+                {func2 && `И(${aperture2}${timerColor2})`}
+                {tvp2 && "Т"}
+                {sound2 && "Г"}
+                {adaptive2 && "А"}
+                {blends2 && "Б"}
+                {screen2 && "Э"}
+                {voltage2}
               </h1>
             </div>
             <div className="tab_content">
@@ -450,14 +463,24 @@ function App() {
                     />
                     Модульный
                   </label>
+                  <hr />
                   <label>
-                    <input type="checkbox" name="" />
+                    <input
+                      type="checkbox"
+                      onClick={() => setScreen2(!screen2)}
+                      name=""
+                    />
                     Экран
                   </label>
                   <label>
-                    <input type="checkbox" name="" />
+                    <input
+                      type="checkbox"
+                      onClick={() => setBlends2(!blends2)}
+                      name=""
+                    />
                     Козырьки (бленды)
                   </label>
+                  <hr />
                   <label>
                     <input
                       type="checkbox"
@@ -472,7 +495,11 @@ function App() {
                 <h3 className="item_header">Функции</h3>
                 <form action="" className="form">
                   <label>
-                    <input type="checkbox" name="" />
+                    <input
+                      onClick={() => setYellowCircle2(!yellowCircle2)}
+                      type="checkbox"
+                      name=""
+                    />
                     Желтый круг
                   </label>
                   <hr />
@@ -484,7 +511,7 @@ function App() {
                     />
                     <span className="func_title">Таймер</span>
                   </label>
-                  {func2 ? (
+                  {func2 && (
                     <div className="timer-radio">
                       <label>
                         <input
@@ -530,20 +557,30 @@ function App() {
                         в круглой апертуре
                       </label>
                     </div>
-                  ) : (
-                    ""
                   )}
                   <hr />
                   <label>
-                    <input type="checkbox" name="" />
+                    <input
+                      type="checkbox"
+                      onClick={() => setAdaptive2(!adaptive2)}
+                      name=""
+                    />
                     Адаптивность
                   </label>
                   <label>
-                    <input type="checkbox" name="" />
+                    <input
+                      type="checkbox"
+                      name=""
+                      onClick={() => setTvp2(!tvp2)}
+                    />
                     ТВП
                   </label>
                   <label>
-                    <input type="checkbox" name="" />
+                    <input
+                      type="checkbox"
+                      name=""
+                      onClick={() => setSound2(!sound2)}
+                    />
                     Звуковой извещатель
                   </label>
                 </form>
@@ -555,8 +592,8 @@ function App() {
         return (
           <div className="pedestrian_tab">
             <div className="tab_title">
-              <h1> 
-                  T.{type3}-{size3}M{voltage3}
+              <h1>
+                T.{type3}-{size3}M{voltage3}
               </h1>
             </div>
             <div className="tab_content">
@@ -564,19 +601,35 @@ function App() {
                 <h3 className="item_header">Напряжение</h3>
                 <form action="" className="form">
                   <label>
-                    <input type="radio" name="voltage" onClick={() => setVoltage3("")}/>
+                    <input
+                      type="radio"
+                      name="voltage"
+                      onClick={() => setVoltage3("")}
+                    />
                     220 В 50 Гц
                   </label>
                   <label>
-                    <input type="radio" name="voltage" onClick={() => setVoltage3(2)} />
+                    <input
+                      type="radio"
+                      name="voltage"
+                      onClick={() => setVoltage3(2)}
+                    />
                     +42 В
                   </label>
                   <label>
-                    <input type="radio" name="voltage" onClick={() => setVoltage3(3)}/>
+                    <input
+                      type="radio"
+                      name="voltage"
+                      onClick={() => setVoltage3(3)}
+                    />
                     +12 В
                   </label>
                   <label>
-                    <input type="radio" name="voltage" onClick={() => setVoltage3(4)}/>
+                    <input
+                      type="radio"
+                      name="voltage"
+                      onClick={() => setVoltage3(4)}
+                    />
                     +24 В
                   </label>
                 </form>
@@ -585,11 +638,19 @@ function App() {
                 <h3 className="item_header">Тип</h3>
                 <form action="" className="form">
                   <label>
-                    <input type="radio" name="type" onClick={() => setType3(5)}/>
+                    <input
+                      type="radio"
+                      name="type"
+                      onClick={() => setType3(5)}
+                    />
                     Т.5
                   </label>
                   <label>
-                    <input type="radio" name="type" onClick={() => setType3(9)}/>
+                    <input
+                      type="radio"
+                      name="type"
+                      onClick={() => setType3(9)}
+                    />
                     Т.9 (СТБ 1300)
                   </label>
                   <label>
@@ -666,7 +727,9 @@ function App() {
           <div className="pedestrian_tab">
             <div className="tab_title">
               <h1>
-                ТИ.{type4}{color4}-{size4}МИ{voltage4}{timer4}
+                ТИ.{type4}
+                {color4}-{size4}МИ{voltage4}
+                {timer4}
               </h1>
             </div>
             <div className="tab_content">
@@ -674,19 +737,35 @@ function App() {
                 <h3 className="item_header">Напряжение</h3>
                 <form action="" className="form">
                   <label>
-                    <input type="radio" name="voltage" onClick={() => setVoltage4("")}/>
+                    <input
+                      type="radio"
+                      name="voltage"
+                      onClick={() => setVoltage4("")}
+                    />
                     220 В 50 Гц
                   </label>
                   <label>
-                    <input type="radio" name="voltage" onClick={() => setVoltage4(2)}/>
+                    <input
+                      type="radio"
+                      name="voltage"
+                      onClick={() => setVoltage4(2)}
+                    />
                     +42 В
                   </label>
                   <label>
-                    <input type="radio" name="voltage" onClick={() => setVoltage4(3)}/>
+                    <input
+                      type="radio"
+                      name="voltage"
+                      onClick={() => setVoltage4(3)}
+                    />
                     +12 В
                   </label>
                   <label>
-                    <input type="radio" name="voltage" onClick={() => setVoltage4(4)}/>
+                    <input
+                      type="radio"
+                      name="voltage"
+                      onClick={() => setVoltage4(4)}
+                    />
                     +24 В
                   </label>
                 </form>
@@ -695,11 +774,25 @@ function App() {
                 <h3 className="item_header">Размер</h3>
                 <form action="" className="form">
                   <label>
-                    <input type="radio" name="size" onClick={() => {setSize4(3); setType4("п")}}/>
+                    <input
+                      type="radio"
+                      name="size"
+                      onClick={() => {
+                        setSize4(3);
+                        setType4("п");
+                      }}
+                    />
                     400 мм
                   </label>
                   <label>
-                    <input type="radio" name="size" onClick={() => {setSize4(5); setType4("в")}}/>
+                    <input
+                      type="radio"
+                      name="size"
+                      onClick={() => {
+                        setSize4(5);
+                        setType4("в");
+                      }}
+                    />
                     600 мм
                   </label>
                 </form>
@@ -721,11 +814,26 @@ function App() {
                 <h3 className="item_header">Тип</h3>
                 <form action="" className="form">
                   <label>
-                    <input type="radio" name="type" defaultChecked onClick={() => {setSize4(3); setType4("п")}}/>
+                    <input
+                      type="radio"
+                      name="type"
+                      defaultChecked
+                      onClick={() => {
+                        setSize4(3);
+                        setType4("п");
+                      }}
+                    />
                     Пешеходный
                   </label>
                   <label>
-                    <input type="radio" name="type"  onClick={() => {setSize4(5); setType4("в")}}/>
+                    <input
+                      type="radio"
+                      name="type"
+                      onClick={() => {
+                        setSize4(5);
+                        setType4("в");
+                      }}
+                    />
                     Транспортный
                   </label>
                 </form>
@@ -738,23 +846,36 @@ function App() {
                     Таймер
                   </label>
                   <label>
-                    <input defaultChecked type="radio" name="func" onClick={() => setTimer4("")}/>
+                    <input
+                      defaultChecked
+                      type="radio"
+                      name="func"
+                      onClick={() => setTimer4("")}
+                    />
                     для обоих
                   </label>
                   <label>
-                    <input type="radio" name="func" onClick={() => setTimer4("(к)")}/>
+                    <input
+                      type="radio"
+                      name="func"
+                      onClick={() => setTimer4("(к)")}
+                    />
                     для красного
                   </label>
                   <label>
-                    <input type="radio" name="func" onClick={() => setTimer4("(з)")}/>
+                    <input
+                      type="radio"
+                      name="func"
+                      onClick={() => setTimer4("(з)")}
+                    />
                     для зеленого
                   </label>
                   <label>
-                    <input type="checkbox" name=""/>
+                    <input type="checkbox" name="" />
                     Адаптивность
                   </label>
                   <label>
-                    <input type="checkbox" name=""/>
+                    <input type="checkbox" name="" />
                     ТВП
                   </label>
                 </form>
@@ -763,19 +884,35 @@ function App() {
                 <h3 className="item_header">Цвет свечения</h3>
                 <form action="" className="form">
                   <label>
-                    <input type="radio" name="voltage" onClick={() => setColor4("")}/>
+                    <input
+                      type="radio"
+                      name="voltage"
+                      onClick={() => setColor4("")}
+                    />
                     Белый
                   </label>
                   <label>
-                    <input type="radio" name="voltage" onClick={() => setColor4("(ж)")}/>
+                    <input
+                      type="radio"
+                      name="voltage"
+                      onClick={() => setColor4("(ж)")}
+                    />
                     Желтый
                   </label>
                   <label>
-                    <input type="radio" name="voltage" onClick={() => setColor4("(з)")}/>
+                    <input
+                      type="radio"
+                      name="voltage"
+                      onClick={() => setColor4("(з)")}
+                    />
                     Зеленый
                   </label>
                   <label>
-                    <input type="radio" name="voltage" onClick={() => setColor4("(к)")}/>
+                    <input
+                      type="radio"
+                      name="voltage"
+                      onClick={() => setColor4("(к)")}
+                    />
                     Красный
                   </label>
                 </form>
