@@ -20,6 +20,9 @@ function App() {
   const [type4, setType4] = useState(`п`);
   const [timer4, setTimer4] = useState("");
   const [size4, setSize4] = useState(3);
+  const [blackBody4, setBlackBody4] = useState(false);
+  const [adaptive4, setAdaptive4] = useState(false);
+  const [tvp4, setTvp4] = useState(false);
 
   const [voltage2, setVoltage2] = useState("");
   const [size2, setSize2] = useState(1);
@@ -34,7 +37,6 @@ function App() {
   const [adaptive2, setAdaptive2] = useState(false);
   const [tvp2, setTvp2] = useState(false);
   const [sound2, setSound2] = useState(false);
-  
 
   const renderTab = () => {
     switch (tab) {
@@ -51,7 +53,7 @@ function App() {
               <div className="item">
                 <h3 className="item_header">Напряжение</h3>
                 <form className="item_form" action="">
-                  <label htmlFor="">
+                  <label>
                     <input
                       type="radio"
                       name="voltage"
@@ -60,7 +62,7 @@ function App() {
                     />
                     220В, 50Гц
                   </label>
-                  <label htmlFor="">
+                  <label>
                     <input
                       type="radio"
                       name="voltage"
@@ -68,7 +70,7 @@ function App() {
                     />
                     +42В
                   </label>
-                  <label htmlFor="">
+                  <label>
                     <input
                       type="radio"
                       name="voltage"
@@ -76,7 +78,7 @@ function App() {
                     />
                     +12В
                   </label>
-                  <label htmlFor="">
+                  <label>
                     <input
                       type="radio"
                       name="voltage"
@@ -89,7 +91,7 @@ function App() {
               <div className="item">
                 <h3 className="item_header">Тип</h3>
                 <form className="item_form" action="">
-                  <label htmlFor="">
+                  <label>
                     <input
                       type="radio"
                       defaultChecked
@@ -98,7 +100,7 @@ function App() {
                     />
                     Т.1
                   </label>
-                  <label htmlFor="">
+                  <label>
                     <input
                       type="radio"
                       name="type"
@@ -106,7 +108,7 @@ function App() {
                     />
                     Т.2
                   </label>
-                  <label htmlFor="">
+                  <label>
                     <input
                       type="radio"
                       name="type"
@@ -114,7 +116,7 @@ function App() {
                     />
                     Т.3
                   </label>
-                  <label htmlFor="">
+                  <label>
                     <input
                       type="radio"
                       name="type"
@@ -122,7 +124,7 @@ function App() {
                     />
                     Т.6
                   </label>
-                  <label htmlFor="">
+                  <label>
                     <input
                       type="radio"
                       name="type"
@@ -130,7 +132,7 @@ function App() {
                     />
                     Т.7
                   </label>
-                  <label htmlFor="">
+                  <label>
                     <input
                       type="radio"
                       name="type"
@@ -138,7 +140,7 @@ function App() {
                     />
                     Т.8
                   </label>
-                  <label htmlFor="">
+                  <label>
                     <input
                       type="radio"
                       name="type"
@@ -146,7 +148,7 @@ function App() {
                     />
                     Т.10
                   </label>
-                  <label htmlFor="">
+                  <label>
                     <input
                       type="radio"
                       name="type"
@@ -154,7 +156,7 @@ function App() {
                     />
                     Т.11
                   </label>
-                  <label htmlFor="">
+                  <label>
                     <input
                       type="radio"
                       name="type"
@@ -167,30 +169,30 @@ function App() {
               <div className="item">
                 <h3 className="item_header">Корпус</h3>
                 <form className="item_form" action="">
-                  <label htmlFor="">
+                  <label>
                     <input type="radio" name="body" />
                     Моно
                   </label>
-                  <label htmlFor="">
+                  <label>
                     <input type="radio" name="body" />
                     "Книга"
                   </label>
-                  <label htmlFor="">
+                  <label>
                     <input type="radio" name="body" />
                     Модульный
                   </label>
                   <hr />
-                  <label htmlFor="">
+                  <label>
                     <input type="checkbox" name="body" />
                     Экран
                   </label>
                   <hr />
-                  <label htmlFor="">
+                  <label>
                     <input type="checkbox" name="body" />
                     Козырьки (бленды)
                   </label>
                   <hr />
-                  <label htmlFor="">
+                  <label>
                     <input type="checkbox" name="body" />
                     Черный корпус
                   </label>
@@ -199,25 +201,25 @@ function App() {
               <div className="item">
                 <h3 className="item_header">Направление</h3>
                 <form className="item_form" action="">
-                  <label htmlFor="">
+                  <label>
                     <input type="radio" name="direction" />
                     Налево
                   </label>
-                  <label htmlFor="">
+                  <label>
                     <input type="radio" name="direction" />
                     Прямо
                   </label>
-                  <label htmlFor="">
+                  <label>
                     <input type="radio" name="direction" />
                     Направо
                   </label>
-                  <label htmlFor="">
+                  <label>
                     <input type="radio" name="direction" />
                   </label>
-                  <label htmlFor="">
+                  <label>
                     <input type="radio" name="direction" />
                   </label>
-                  <label htmlFor="">
+                  <label>
                     <input type="radio" name="direction" />
                   </label>
                 </form>
@@ -225,15 +227,15 @@ function App() {
               <div className="item">
                 <h3 className="item_header">Размер</h3>
                 <form className="item_form" action="">
-                  <label htmlFor="">
+                  <label>
                     <input type="radio" name="size" />
                     200мм
                   </label>
-                  <label htmlFor="">
+                  <label>
                     <input type="radio" name="size" />
                     300мм
                   </label>
-                  <label htmlFor="">
+                  <label>
                     <input type="radio" name="size" />
                     300 + 200мм
                   </label>
@@ -242,47 +244,47 @@ function App() {
               <div className="item">
                 <h3 className="item_header">Функции</h3>
                 <form className="item_form" action="">
-                  <label htmlFor="">
+                  <label>
                     <input type="checkbox" />
                     Таймер
                   </label>
-                  <label htmlFor="">
+                  <label>
                     <input type="radio" name="func" />
                     для обоих
                   </label>
-                  <label htmlFor="">
+                  <label>
                     <input type="radio" name="func" />
                     для красного
                   </label>
-                  <label htmlFor="">
+                  <label>
                     <input type="radio" name="func" />
                     для зеленого
                   </label>
-                  <label htmlFor="">
+                  <label>
                     <input type="radio" name="func" />
                     белый для обоих
                   </label>
-                  <label htmlFor="">
+                  <label>
                     <input type="radio" name="func" />
                     белый для красного
                   </label>
-                  <label htmlFor="">
+                  <label>
                     <input type="radio" name="func" />
                     белый для зеленого
                   </label>
                   <hr />
-                  <label htmlFor="">
+                  <label>
                     <input type="radio" name="aperture" />в квадратной апертуре
                   </label>
-                  <label htmlFor="">
+                  <label>
                     <input type="radio" name="aperture" />в круглой апертуре
                   </label>
                   <hr />
-                  <label htmlFor="">
+                  <label>
                     <input type="checkbox" />
                     Адаптивность
                   </label>
-                  <label htmlFor="">
+                  <label>
                     <input type="checkbox" />
                     ТВП
                   </label>
@@ -291,15 +293,15 @@ function App() {
               <div className="item">
                 <h3 className="item_header">Внешний вид</h3>
                 <form className="item_form" action="">
-                  <label htmlFor="">
+                  <label>
                     <input type="radio" name="look" />
                     Обычный по ГОСТ
                   </label>
-                  <label htmlFor="">
+                  <label>
                     <input type="radio" name="look" />
                     Плотный по ГОСТ
                   </label>
-                  <label htmlFor="">
+                  <label>
                     <input type="radio" name="look" />
                     EN 12368
                   </label>
@@ -308,25 +310,25 @@ function App() {
               <div className="item">
                 <h3 className="item_header">Левая секция</h3>
                 <form className="item_form" action="">
-                  <label htmlFor="">
+                  <label>
                     <input type="checkbox" />
                     Использовать
                   </label>
                   <hr />
-                  <label htmlFor="">
+                  <label>
                     <input type="checkbox" />
                     Красный круг
                   </label>
-                  <label htmlFor="">
+                  <label>
                     <input type="checkbox" />
                     Желтый круг
                   </label>
                   <hr />
-                  <label htmlFor="">
+                  <label>
                     <input type="radio" name="section--left" />
                     Налево
                   </label>
-                  <label htmlFor="">
+                  <label>
                     <input type="radio" name="section--left" />
                     45deg
                   </label>
@@ -335,29 +337,29 @@ function App() {
               <div className="item">
                 <h3 className="item_header">Правая секция</h3>
                 <form className="item_form" action="">
-                  <label htmlFor="">
+                  <label>
                     <input type="checkbox" />
                     Использовать
                   </label>
                   <hr />
-                  <label htmlFor="">
+                  <label>
                     <input type="checkbox" />
                     Красный круг
                   </label>
-                  <label htmlFor="">
+                  <label>
                     <input type="checkbox" />
                     Желтый круг
                   </label>
                   <hr />
-                  <label htmlFor="">
+                  <label>
                     <input type="radio" name="section--right" />
                     Направо
                   </label>
-                  <label htmlFor="">
+                  <label>
                     <input type="radio" name="section--right" />
                     45deg
                   </label>
-                  <label htmlFor="">
+                  <label>
                     <input type="radio" name="section--right" />
                     Прямо
                   </label>
@@ -728,8 +730,10 @@ function App() {
             <div className="tab_title">
               <h1>
                 ТИ.{type4}
-                {color4}-{size4}МИ{voltage4}
-                {timer4}
+                {color4}-{size4}М{blackBody4 && "(ч)"}И{timer4}
+                {tvp4 && "Т"}
+                {adaptive4 && "А"}
+                {voltage4}
               </h1>
             </div>
             <div className="tab_content">
@@ -804,8 +808,14 @@ function App() {
                     <input checked type="radio" name="voltage" />
                     Моно
                   </label>
+
+                  <hr />
                   <label>
-                    <input type="checkbox" name="" />
+                    <input
+                      type="checkbox"
+                      onClick={() => setBlackBody4(!blackBody4)}
+                      name=""
+                    />
                     Черный корпус
                   </label>
                 </form>
@@ -870,12 +880,21 @@ function App() {
                     />
                     для зеленого
                   </label>
+                  <hr />
                   <label>
-                    <input type="checkbox" name="" />
+                    <input
+                      type="checkbox"
+                      name=""
+                      onClick={() => setAdaptive4(!adaptive4)}
+                    />
                     Адаптивность
                   </label>
                   <label>
-                    <input type="checkbox" name="" />
+                    <input
+                      type="checkbox"
+                      name=""
+                      onClick={() => setTvp4(!tvp4)}
+                    />
                     ТВП
                   </label>
                 </form>
@@ -887,6 +906,7 @@ function App() {
                     <input
                       type="radio"
                       name="voltage"
+                      defaultChecked
                       onClick={() => setColor4("")}
                     />
                     Белый
