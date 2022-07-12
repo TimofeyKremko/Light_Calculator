@@ -15,7 +15,7 @@ function App() {
           <div className="tranport_tab">
             <div className="tab_title">
               <h1>
-                T.{type1}-{size1}M{exterior1}
+                {type1 === "ТДС" ? "ТДС.1" : `Т.${type1}`}-{size1}M{exterior1}
                 {voltage1}
               </h1>
             </div>
@@ -41,11 +41,19 @@ function App() {
                     +42В
                   </label>
                   <label htmlFor="">
-                    <input type="radio" name="voltage" />
+                    <input
+                      type="radio"
+                      name="voltage"
+                      onClick={() => setVoltage1(3)}
+                    />
                     +12В
                   </label>
                   <label htmlFor="">
-                    <input type="radio" name="voltage" />
+                    <input
+                      type="radio"
+                      name="voltage"
+                      onClick={() => setVoltage1(4)}
+                    />
                     +24В
                   </label>
                 </form>
@@ -54,39 +62,76 @@ function App() {
                 <h3 className="item_header">Тип</h3>
                 <form className="item_form" action="">
                   <label htmlFor="">
-                    <input type="radio" defaultChecked name="type" />
+                    <input
+                      type="radio"
+                      defaultChecked
+                      name="type"
+                      onClick={() => setType1(1)}
+                    />
                     Т.1
                   </label>
                   <label htmlFor="">
-                    <input type="radio" name="type" />
+                    <input
+                      type="radio"
+                      name="type"
+                      onClick={() => setType1(2)}
+                    />
                     Т.2
                   </label>
                   <label htmlFor="">
-                    <input type="radio" name="type" />
+                    <input
+                      type="radio"
+                      name="type"
+                      onClick={() => setType1(3)}
+                    />
                     Т.3
                   </label>
                   <label htmlFor="">
-                    <input type="radio" name="type" />
+                    <input
+                      type="radio"
+                      name="type"
+                      onClick={() => setType1(6)}
+                    />
                     Т.6
                   </label>
                   <label htmlFor="">
-                    <input type="radio" name="type" />
+                    <input
+                      type="radio"
+                      name="type"
+                      onClick={() => setType1(7)}
+                    />
                     Т.7
                   </label>
                   <label htmlFor="">
-                    <input type="radio" name="type" />
+                    <input
+                      type="radio"
+                      name="type"
+                      onClick={() => setType1(8)}
+                    />
                     Т.8
                   </label>
                   <label htmlFor="">
-                    <input type="radio" name="type" />
+                    <input
+                      type="radio"
+                      name="type"
+                      onClick={() => setType1(10)}
+                    />
                     Т.10
                   </label>
                   <label htmlFor="">
-                    <input type="radio" name="type" />
+                    <input
+                      type="radio"
+                      name="type"
+                      onClick={() => setType1(11)}
+                    />
                     Т.11
                   </label>
                   <label htmlFor="">
-                    <input type="radio" name="type" />
+                    <input
+                      type="radio"
+                      name="type"
+                      onClick={() => setType1("ТДС")}
+                    />
                     ТДС
                   </label>
                 </form>
@@ -106,14 +151,17 @@ function App() {
                     <input type="radio" name="body" />
                     Модульный
                   </label>
+                  <hr />
                   <label htmlFor="">
                     <input type="checkbox" name="body" />
                     Экран
                   </label>
+                  <hr />
                   <label htmlFor="">
                     <input type="checkbox" name="body" />
                     Козырьки (бленды)
                   </label>
+                  <hr />
                   <label htmlFor="">
                     <input type="checkbox" name="body" />
                     Черный корпус
