@@ -3,10 +3,13 @@ import { useState } from "react";
 
 function App() {
   const [tab, setTab] = useState("transport");
+
+
   const [voltage1, setVoltage1] = useState("");
   const [type1, setType1] = useState(1);
   const [size1, setSize1] = useState(1);
-  const [exterior1, setExterior1] = useState("");
+  const [body1, setBody1] = useState("");
+  const [screen1, setScreen1] = useState(false);
 
   const [voltage3, setVoltage3] = useState("");
   const [type3, setType3] = useState(5);
@@ -48,7 +51,7 @@ function App() {
           <div className="tranport_tab">
             <div className="tab_title">
               <h1>
-                {type1 === "ТДС" ? "ТДС.1" : `Т.${type1}`}-{size1}M{exterior1}
+                {type1 === "ТДС" ? "ТДС.1" : `Т.${type1}`}-{size1}M{body1 ? `(${body1})` : ""}
                 {voltage1}
               </h1>
             </div>
@@ -173,15 +176,27 @@ function App() {
                 <h3 className="item_header">Корпус</h3>
                 <form className="item_form" action="">
                   <label>
-                    <input type="radio" name="body" />
+                    <input
+                      type="radio"
+                      onClick={() => setBody1("")}
+                      name="body"
+                    />
                     Моно
                   </label>
                   <label>
-                    <input type="radio" name="body" />
+                    <input
+                      type="radio"
+                      onClick={() => setBody1(2)}
+                      name="body"
+                    />
                     "Книга"
                   </label>
                   <label>
-                    <input type="radio" name="body" />
+                    <input
+                      type="radio"
+                      onClick={() => setBody1(3)}
+                      name="body"
+                    />
                     Модульный
                   </label>
                   <hr />
@@ -696,11 +711,11 @@ function App() {
                   ) : (
                     <>
                     <label>
-                      <input defaultChecked type="radio" name="size" onClick={() => setSize3(1)}/>
+                      <input defaultChecked type="radio" name="size1" onClick={() => setSize3(1)}/>
                       200 мм
                     </label>
                     <label>
-                      <input type="radio" name="size" onClick={() => setSize3(2)}/>
+                      <input type="radio" name="size1" onClick={() => setSize3(2)}/>
                       300 мм
                     </label>
                     </>
