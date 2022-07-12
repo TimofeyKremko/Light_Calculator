@@ -64,3 +64,7 @@ hr {
 input {
   margin-right: 5px;
 }
+
+#root {
+  padding: 20px;
+}

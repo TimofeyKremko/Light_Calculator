@@ -13,7 +13,10 @@ function App() {
   const [size3, setSize3] = useState(1);
   const [body3, setBody3] = useState("");
   const [direction3, setDirection3] = useState("");
-  const [func3, setFunc3] = useState("");
+  const [adaptive3, setAdaptive3] = useState(false);
+  const [horizontal3, setHorizontal3] = useState(false);
+  const [blackBody3, setBlackBody3] = useState(false);
+  const [screen3, setScreen3] = useState(false);
 
   const [voltage4, setVoltage4] = useState("");
   const [color4, setColor4] = useState("");
@@ -556,7 +559,7 @@ function App() {
           <div className="pedestrian_tab">
             <div className="tab_title">
               <h1> 
-                  T.{type3}-{size3}M{voltage3}
+                  T.{type3}{type3 === 9 ? `${horizontal3 ? ".г" : ""}${direction3}` : ""}-{size3}М{body3 === 3 || blackBody3 ? `(${body3}${blackBody3 ? "ч" : ""})` : ""}{type3 === 9 ? screen3 && "Э" : ""}{adaptive3 && "А"}{voltage3}
               </h1>
             </div>
             <div className="tab_content">
@@ -564,7 +567,7 @@ function App() {
                 <h3 className="item_header">Напряжение</h3>
                 <form action="" className="form">
                   <label>
-                    <input type="radio" name="voltage" onClick={() => setVoltage3("")}/>
+                    <input defaultChecked type="radio" name="voltage" onClick={() => setVoltage3("")}/>
                     220 В 50 Гц
                   </label>
                   <label>
@@ -585,36 +588,47 @@ function App() {
                 <h3 className="item_header">Тип</h3>
                 <form action="" className="form">
                   <label>
-                    <input type="radio" name="type" onClick={() => setType3(5)}/>
+                    <input defaultChecked type="radio" name="type" onClick={() => setType3(5)}/>
                     Т.5
                   </label>
                   <label>
-                    <input type="radio" name="type" onClick={() => setType3(9)}/>
+                    <input type="radio" name="type" onClick={() => {setType3(9); setHorizontal3(false); setSize3(1); setDirection3(""); setBody3(""); setScreen3(false)}}/>
                     Т.9 (СТБ 1300)
                   </label>
-                  <label>
-                    <input type="checkbox" name="" />
-                    Горизонтаьный
-                  </label>
+                  {type3 === 9 ? (
+                    <>
+                    <hr/>
+                      <label>
+                        <input type="checkbox" name="" onClick={() => setHorizontal3(!horizontal3)}/>
+                      Горизонтаьный
+                      </label>
+                    </>
+                  ) : ""}
                 </form>
               </div>
               <div className="item">
                 <h3 className="item_header">Корпус</h3>
                 <form action="" className="form">
                   <label>
-                    <input type="radio" name="voltage" />
+                    <input defaultChecked type="radio" name="voltage" onClick={() => setBody3("")}/>
                     Моно
                   </label>
+                  {type3 === 9 ? (
+                    <>
+                      <label>
+                        <input type="radio" name="voltage" onClick={() => setBody3(3)}/>
+                        Модульный
+                      </label>
+                      <hr/>
+                      <label>
+                        <input type="checkbox" name="" onClick={() => setScreen3(!screen3)}/> 
+                        Экран
+                      </label> 
+                    </>
+                  ) : ""} 
+                  <hr/>
                   <label>
-                    <input type="radio" name="voltage" />
-                    Модульный
-                  </label>
-                  <label>
-                    <input type="checkbox" name="" />
-                    Экран
-                  </label>
-                  <label>
-                    <input type="checkbox" name="" />
+                    <input type="checkbox" name="" onClick={() => setBlackBody3(!blackBody3)}/>
                     Черный корпус
                   </label>
                 </form>
@@ -622,38 +636,52 @@ function App() {
               <div className="item">
                 <h3 className="item_header">Размер</h3>
                 <form action="" className="form">
-                  <label>
-                    <input type="radio" name="size" />
-                    200 мм
-                  </label>
-                  <label>
-                    <input type="radio" name="size" />
-                    300 мм
-                  </label>
+
+                  {type3 === 5 ? (
+                    <label>
+                      <input checked disabled type="radio" name="size" onClick={() => setSize3(1)}/>
+                      100 мм
+                    </label>
+                  ) : (
+                    <>
+                    <label>
+                      <input defaultChecked type="radio" name="size" onClick={() => setSize3(1)}/>
+                      200 мм
+                    </label>
+                    <label>
+                      <input type="radio" name="size" onClick={() => setSize3(2)}/>
+                      300 мм
+                    </label>
+                    </>
+                  )}
                 </form>
               </div>
               <div className="item">
                 <h3 className="item_header">Направление</h3>
                 <form action="" className="form">
-                  <label>
-                    <input type="radio" name="direction" />
-                    Прямо
-                  </label>
-                  <label>
-                    <input type="radio" name="direction" />
-                    Налево
-                  </label>
-                  <label>
-                    <input type="radio" name="direction" />
-                    Направо
-                  </label>
+                  {type3 === 9 ? (
+                    <>
+                      <label>
+                        <input defaultChecked type="radio" name="direction" onClick={()=> setDirection3("")}/>
+                        Прямо
+                      </label>
+                      <label>
+                        <input type="radio" name="direction" onClick={()=> setDirection3("л")}/>
+                        Налево
+                      </label>
+                      <label>
+                        <input type="radio" name="direction" onClick={()=> setDirection3("п")}/>
+                        Направо
+                      </label>
+                    </>
+                  ) : ""}
                 </form>
               </div>
               <div className="item">
-                <h3 className="item_header">Направление</h3>
+                <h3 className="item_header">Функции</h3>
                 <form action="" className="form">
                   <label>
-                    <input type="checkbox" name="" />
+                    <input type="checkbox" name="" onClick={() => setAdaptive3(!adaptive3)}/>
                     Адаптивность
                   </label>
                 </form>
