@@ -33,6 +33,7 @@ hr {
 .tab_title {
   padding: 5px;
   border: 2px solid #000;
+  margin-bottom: 5px;
 }
 
 
@@ -58,4 +59,8 @@ hr {
 .timer-radio {
   display: flex;
   flex-direction: column;
+}
+
+input {
+  margin-right: 5px;
 }
