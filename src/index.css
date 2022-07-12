@@ -30,6 +30,10 @@ hr {
   margin: 10px 0;
 }
 
+.tab_title {
+  padding: 5px;
+  border: 2px solid #000;
+}
 
 
 .item {
@@ -46,4 +50,12 @@ hr {
 .item form {
     display: flex;
     flex-direction: column;
+}
+.func_title {
+  font-weight: bold;
+}
+
+.timer-radio {
+  display: flex;
+  flex-direction: column;
 }
