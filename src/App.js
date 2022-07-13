@@ -21,7 +21,6 @@ function App() {
   const [exterior1, setExterior1] = useState("");
   const [leftSection1, setLeftSection1] = useState(false);
   const [rightSection1, setRightSection1] = useState(false);
-  
 
   const [voltage3, setVoltage3] = useState("");
   const [type3, setType3] = useState(5);
@@ -65,7 +64,8 @@ function App() {
               <h1>
                 {type1 === "ТДС" ? "ТДС.1" : `Т.${type1}`}
                 {leftSection1 || rightSection1 ? "." : ""}
-                {rightSection1 && "п"}{leftSection1 && "л"}
+                {rightSection1 && "п"}
+                {leftSection1 && "л"}
                 {horizontal1 && ".г"}-{size1}M
                 {body1 ? `(${body1}${blackBody1 ? "ч" : ""})` : ""}
                 {func1 && `И(${aperture1}${timerColor1})`}
@@ -463,7 +463,11 @@ function App() {
                         </label>
                         <hr />
                         <label>
-                          <input defaultChecked type="radio" name="section--left" />
+                          <input
+                            defaultChecked
+                            type="radio"
+                            name="section--left"
+                          />
                           Налево
                         </label>
                         <label>
@@ -499,7 +503,11 @@ function App() {
                         </label>
                         <hr />
                         <label>
-                          <input defaultChecked type="radio" name="section--right" />
+                          <input
+                            defaultChecked
+                            type="radio"
+                            name="section--right"
+                          />
                           Направо
                         </label>
                         <label>
