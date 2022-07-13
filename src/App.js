@@ -21,6 +21,12 @@ function App() {
   const [exterior1, setExterior1] = useState("");
   const [leftSection1, setLeftSection1] = useState(false);
   const [rightSection1, setRightSection1] = useState(false);
+  const [leftRedCircle1, setLeftRedCircle1] = useState(false);
+  const [leftYellowCircle1, setLeftYellowCircle1] = useState(false);
+  const [rightRedCircle1, setRightRedCircle1] = useState(false);
+  const [rightYellowCircle1, setRightYellowCircle1] = useState(false);
+  const [leftDirection1, setLeftDirection1] = useState("");
+  const [rightDirection1, setRightDirection1] = useState("");
 
   const [voltage3, setVoltage3] = useState("");
   const [type3, setType3] = useState(5);
@@ -65,7 +71,17 @@ function App() {
                 {type1 === "ТДС" ? "ТДС.1" : `Т.${type1}`}
                 {leftSection1 || rightSection1 ? "." : ""}
                 {rightSection1 && "п"}
+                {rightRedCircle1 || rightYellowCircle1
+                  ? `(${rightDirection1}${rightRedCircle1 ? "к" : ""}${
+                      rightYellowCircle1 ? "ж" : ""
+                    })`
+                  : ""}
                 {leftSection1 && "л"}
+                {leftRedCircle1 || leftYellowCircle1
+                  ? `(${leftDirection1}${leftRedCircle1 ? "к" : ""}${
+                      leftYellowCircle1 ? "ж" : ""
+                    })`
+                  : ""}
                 {horizontal1 && ".г"}-{size1}M
                 {body1 ? `(${body1}${blackBody1 ? "ч" : ""})` : ""}
                 {func1 && `И(${aperture1}${timerColor1})`}
@@ -208,6 +224,7 @@ function App() {
                 <form className="item_form" action="">
                   <label>
                     <input
+                      defaultChecked
                       type="radio"
                       onClick={() => setBody1("")}
                       name="body"
@@ -415,6 +432,7 @@ function App() {
                 <form className="item_form" action="">
                   <label>
                     <input
+                      defaultChecked
                       type="radio"
                       onClick={() => setExterior1("")}
                       name="look"
@@ -454,11 +472,19 @@ function App() {
                       <div className="leftSection_btns">
                         <hr />
                         <label>
-                          <input type="checkbox" />
+                          <input
+                            onClick={() => setLeftRedCircle1(!leftRedCircle1)}
+                            type="checkbox"
+                          />
                           Красный круг
                         </label>
                         <label>
-                          <input type="checkbox" />
+                          <input
+                            onClick={() =>
+                              setLeftYellowCircle1(!leftYellowCircle1)
+                            }
+                            type="checkbox"
+                          />
                           Желтый круг
                         </label>
                         <hr />
@@ -467,11 +493,16 @@ function App() {
                             defaultChecked
                             type="radio"
                             name="section--left"
+                            onClick={() => setLeftDirection1("")}
                           />
                           Налево
                         </label>
                         <label>
-                          <input type="radio" name="section--left" />
+                          <input
+                            type="radio"
+                            onClick={() => setLeftDirection1(2)}
+                            name="section--left"
+                          />
                           45deg
                         </label>
                       </div>
@@ -494,28 +525,45 @@ function App() {
                       <div className="rightSection_btns">
                         <hr />
                         <label>
-                          <input type="checkbox" />
+                          <input
+                            type="checkbox"
+                            onClick={() => setRightRedCircle1(!rightRedCircle1)}
+                          />
                           Красный круг
                         </label>
                         <label>
-                          <input type="checkbox" />
+                          <input
+                            onClick={() =>
+                              setRightYellowCircle1(!rightYellowCircle1)
+                            }
+                            type="checkbox"
+                          />
                           Желтый круг
                         </label>
                         <hr />
                         <label>
                           <input
                             defaultChecked
+                            onClick={() => setRightDirection1("")}
                             type="radio"
                             name="section--right"
                           />
                           Направо
                         </label>
                         <label>
-                          <input type="radio" name="section--right" />
+                          <input
+                            type="radio"
+                            onClick={() => setRightDirection1(2)}
+                            name="section--right"
+                          />
                           45deg
                         </label>
                         <label>
-                          <input type="radio" name="section--right" />
+                          <input
+                            type="radio"
+                            onClick={() => setRightDirection1(3)}
+                            name="section--right"
+                          />
                           Прямо
                         </label>
                       </div>
@@ -1215,22 +1263,21 @@ function App() {
         <div className="right-content">
           <div className="tab_buttons">
             <div
-              
               onClick={() => setTab("transport")}
-              className = {tab === "transport" ? "active tab" : "tab"}
+              className={tab === "transport" ? "active tab" : "tab"}
             >
               Транспортные
             </div>
             <div
               onClick={() => setTab("pedestrian")}
-              className = {tab === "pedestrian" ? "active tab" : "tab"}
+              className={tab === "pedestrian" ? "active tab" : "tab"}
             >
               Пешеходные
             </div>
-            <div 
-              onClick={() => setTab("tram")} 
+            <div
+              onClick={() => setTab("tram")}
               className={tab === "tram" ? "active tab" : "tab"}
-              >
+            >
               Трамвайные
             </div>
             <div
