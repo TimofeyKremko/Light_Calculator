@@ -1214,27 +1214,31 @@ function App() {
         <div className="left-content">left-content</div>
         <div className="right-content">
           <div className="tab_buttons">
-            <button
+            <div
+              
               onClick={() => setTab("transport")}
-              className="tab tab_transport_btn"
+              className = {tab === "transport" ? "active tab" : "tab"}
             >
               Транспортные
-            </button>
-            <button
+            </div>
+            <div
               onClick={() => setTab("pedestrian")}
-              className="tab tab_pedestrian_btn"
+              className = {tab === "pedestrian" ? "active tab" : "tab"}
             >
               Пешеходные
-            </button>
-            <button onClick={() => setTab("tram")} className="tab tab_tram_btn">
+            </div>
+            <div 
+              onClick={() => setTab("tram")} 
+              className={tab === "tram" ? "active tab" : "tab"}
+              >
               Трамвайные
-            </button>
-            <button
+            </div>
+            <div
               onClick={() => setTab("countdown")}
-              className="tab tab_countdown_btn"
+              className={tab === "countdown" ? "active tab" : "tab"}
             >
               Табло информационное обратного отсчета
-            </button>
+            </div>
           </div>
           <div className="tabs">{renderTab()}</div>
         </div>
