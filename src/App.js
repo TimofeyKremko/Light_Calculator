@@ -21,6 +21,7 @@ function App() {
   const [exterior1, setExterior1] = useState("");
   const [leftSection1, setLeftSection1] = useState(false);
   const [rightSection1, setRightSection1] = useState(false);
+  const [direction1, setDirection1] = useState("л");
   
 
   const [voltage3, setVoltage3] = useState("");
@@ -64,7 +65,8 @@ function App() {
             <div className="tab_title">
               <h1>
                 {type1 === "ТДС" ? "ТДС.1" : `Т.${type1}`}
-                {leftSection1 || rightSection1 ? "." : ""}
+                {leftSection1 || rightSection1 || type1 === 2 ? "." : ""}
+                {type1 === 2 ? direction1 : ""}
                 {rightSection1 && "п"}{leftSection1 && "л"}
                 {horizontal1 && ".г"}-{size1}M
                 {body1 ? `(${body1}${blackBody1 ? "ч" : ""})` : ""}
@@ -283,30 +285,35 @@ function App() {
               </div>
               <div className="item">
                 <h3 className="item_header">Направление</h3>
-                <form className="item_form" action="">
-                  <label>
-                    <input type="radio" name="direction" />
-                    Налево
-                  </label>
-                  <label>
-                    <input type="radio" name="direction" />
-                    Прямо
-                  </label>
-                  <label>
-                    <input type="radio" name="direction" />
-                    Направо
-                  </label>
-                  <label>
-                    <input type="radio" name="direction" />
-                  </label>
-                  <label>
-                    <input type="radio" name="direction" />
-                  </label>
-                  <label>
-                    <input type="radio" name="direction" />
-                  </label>
-                </form>
-              </div>
+                {type1 === 2 ? (
+                  <form className="item_form" action="">
+                    <label>
+                      <input defaultChecked type="radio" name="direction" onClick={() => setDirection1("л")}/>
+                      Налево
+                    </label>
+                    <label>
+                      <input type="radio" name="direction" onClick={() => setDirection1("о")}/>
+                      Прямо
+                    </label>
+                    <label>
+                      <input type="radio" name="direction" onClick={() => setDirection1("п")}/>
+                      Направо
+                    </label>
+                    <label>
+                      <input type="radio" name="direction" onClick={() => setDirection1("ло")}/>
+                      Прямо-налево
+                    </label>
+                    <label>
+                      <input type="radio" name="direction" onClick={() => setDirection1("оп")}/>
+                      Прямо-направо
+                    </label>
+                    <label>
+                      <input type="radio" name="direction" onClick={() => setDirection1("лп")}/>
+                      Налево-направо
+                    </label>
+                  </form>
+                ): ""}
+              </div> 
               <div className="item">
                 <h3 className="item_header">Размер</h3>
                 <form className="item_form" action="">
